@@ -1,4 +1,4 @@
-package jackson.example.deserialzer.codestable.base;
+package jackson.example.deserialzer.base.codestable;
 
 public interface Codestable {
     String getCategory();

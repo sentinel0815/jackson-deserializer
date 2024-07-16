@@ -1,6 +1,6 @@
 package jackson.example.deserialzer.codestable.type;
 
-import jackson.example.deserialzer.codestable.base.AbstractCodestable;
+import jackson.example.deserialzer.base.codestable.AbstractCodestable;
 
 import java.util.Collections;
 import java.util.HashMap;
