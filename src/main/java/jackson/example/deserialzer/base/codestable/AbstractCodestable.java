@@ -7,7 +7,7 @@ import lombok.*;
 @EqualsAndHashCode
 @Getter
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "_class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "_class", visible = true)
 public abstract class AbstractCodestable implements Codestable {
 
     private final String category;

@@ -2,6 +2,7 @@ package jackson.example.deserialzer.codestable.type;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jackson.example.deserialzer.base.codestable.AbstractCodestable;
+import lombok.ToString;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,7 +10,6 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 // generated class
-
 public class GenderCodestable extends AbstractCodestable {
     public static final String CATEGORY = "GENDER";
 

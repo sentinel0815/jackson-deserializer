@@ -24,13 +24,12 @@ public class CodestableDeserializer<T extends AbstractCodestable> extends StdDes
     public T deserialize(final JsonParser jp, final DeserializationContext ctxt)
             throws IOException {
         final JsonNode node = jp.getCodec().readTree(jp);
-        final String category = node.get("category").asText();
+        final String className = node.get("_class").asText();
         final String code = node.get("code").asText();
 
         try {
             // How to read type class info?
-            String targetClassName = jp.getCurrentName();
-            final Class<T> clazz = (Class<T>) Class.forName(targetClassName);
+            final Class<T> clazz = (Class<T>) Class.forName(className);
             final Method valueOfMethod = clazz.getMethod("valueOf", String.class);
             return (T) valueOfMethod.invoke(null, code);
         } catch (final ClassNotFoundException | InvocationTargetException | NoSuchMethodException |

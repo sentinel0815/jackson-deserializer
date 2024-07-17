@@ -10,9 +10,9 @@ import jackson.example.deserialzer.base.codestable.Codestable;
 import jackson.example.deserialzer.codestable.type.GenderCodestable;
 import jackson.example.deserialzer.codestable.type.InterestsCodestable;
 
-public class CodestableObjectMapper extends ObjectMapper {
+public class CodestableObjectMapperKnowsSubTypes extends ObjectMapper {
 
-    public CodestableObjectMapper() {
+    public CodestableObjectMapperKnowsSubTypes() {
         super();
 
         // add configuration here
@@ -28,9 +28,9 @@ public class CodestableObjectMapper extends ObjectMapper {
         CodestableDeserializer ctdeser = new CodestableDeserializer();
         module.addDeserializer(Codestable.class, ctdeser);
         module.addDeserializer(AbstractCodestable.class, ctdeser);
-        // In real the concrete codestable implementation classes are not known in 'base' where the ObjectMapper is configured
-        //module.addDeserializer(GenderCodestable.class, ctdeser);
-        //module.addDeserializer(InterestsCodestable.class, ctdeser);
+        // In real the concrete codestable implementation classes are not known in 'base'
+        module.addDeserializer(GenderCodestable.class, ctdeser);
+        module.addDeserializer(InterestsCodestable.class, ctdeser);
         super.registerModules(module);
 
         super.configure(MapperFeature.USE_STATIC_TYPING, true);

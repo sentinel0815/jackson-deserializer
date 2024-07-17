@@ -1,6 +1,7 @@
 package jackson.example.deserialzer.codestable.type;
 
 import jackson.example.deserialzer.base.codestable.AbstractCodestable;
+import lombok.ToString;
 
 import java.util.Collections;
 import java.util.HashMap;
