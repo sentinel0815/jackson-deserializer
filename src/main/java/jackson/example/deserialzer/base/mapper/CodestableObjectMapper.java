@@ -1,5 +1,6 @@
 package jackson.example.deserialzer.base.mapper;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
@@ -17,23 +18,9 @@ public class CodestableObjectMapper extends ObjectMapper {
 
         // add configuration here
 
-        final PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
-                .allowIfSubType("jackson.example.deserialzer.")
-                .allowIfBaseType("java.util.List")
-                .build();
-        super.activateDefaultTyping(ptv, DefaultTyping.NON_FINAL);
 
-
-        final SimpleModule module = new SimpleModule();
-        CodestableDeserializer ctdeser = new CodestableDeserializer();
-        module.addDeserializer(Codestable.class, ctdeser);
-        module.addDeserializer(AbstractCodestable.class, ctdeser);
-        // In real the concrete codestable implementation classes are not known in 'base' where the ObjectMapper is configured
-        //module.addDeserializer(GenderCodestable.class, ctdeser);
-        //module.addDeserializer(InterestsCodestable.class, ctdeser);
-        super.registerModules(module);
-
-        super.configure(MapperFeature.USE_STATIC_TYPING, true);
+        super//.configure(MapperFeature.USE_STATIC_TYPING, true)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     }
 }

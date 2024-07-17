@@ -1,5 +1,7 @@
 package jackson.example.deserialzer.codestable.type;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jackson.example.deserialzer.base.codestable.AbstractCodestable;
 import lombok.ToString;
@@ -32,7 +34,8 @@ public class GenderCodestable extends AbstractCodestable {
         return Collections.unmodifiableMap(map);
     }
 
-    public static GenderCodestable valueOf(final String code) {
+    @JsonCreator
+    public static GenderCodestable valueOf(final @JsonProperty("code") String code) {
         if (BY_CODE.containsKey(code)) {
             return BY_CODE.get(code);
         } else {
